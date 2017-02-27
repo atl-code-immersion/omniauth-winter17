@@ -1,0 +1,15 @@
+<h1>Welcome to My Site!</h1>
+<div id="user-widget">
+  <% if current_user %>
+    Welcome <strong><%= current_user.name %></strong>!<br />
+    <% if current_user.provider == "facebook" %>
+	    <%= image_tag(current_user.normalimage) %><br />
+  	<% else %>
+  		<%= image_tag current_user.image, width: "100" %><br />
+  	<% end %>
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %><br />
+    <%= link_to "Sign in with Github", "auth/github" %>
+  <% end %>
+</div>
